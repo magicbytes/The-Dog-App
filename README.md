@@ -1,4 +1,4 @@
-Breaking Bad Characters
+The Dog App
 =========================
 
 An application which illustrates a simplified MVVM architecture for executing a network call and showing
