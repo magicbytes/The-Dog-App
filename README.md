@@ -1,5 +1,9 @@
 The Dog App
 =========================
+List            |  Details
+:-------------------------:|:-------------------------:
+![]<img src="https://user-images.githubusercontent.com/17177542/123901463-e1029f80-d962-11eb-8a1e-117ca62d8b2f.png" width="250" height="500">  |  ![]<img src="https://user-images.githubusercontent.com/17177542/123901470-e2cc6300-d962-11eb-96c4-cea0ca834554.png" width="250" height="500">
+
 
 An application which illustrates a simplified MVVM architecture for executing a network call and showing
 the list of content inside a `RecyclerView`. For implementing the MVVM architecture, it was used JetPack and
