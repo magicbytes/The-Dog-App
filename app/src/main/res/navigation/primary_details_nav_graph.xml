@@ -24,8 +24,7 @@
         >
         <argument
             android:name="item_id"
-            android:defaultValue=""
-            app:argType="string"
+            app:argType="integer"
             />
     </fragment>
 </navigation>

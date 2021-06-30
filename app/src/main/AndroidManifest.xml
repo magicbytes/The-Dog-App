@@ -3,6 +3,8 @@
     package="com.magicbytes.thedogapp_cv"
     >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".DogApp"
         android:allowBackup="true"

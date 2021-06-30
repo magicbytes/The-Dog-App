@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context="com.magicbytes.thedogapp_cv.ItemDetailHostActivity"
-        tools:listitem="@layout/item_list_content"
+        tools:listitem="@layout/item_list_dog_bred"
         />
 
     <androidx.constraintlayout.widget.Guideline
