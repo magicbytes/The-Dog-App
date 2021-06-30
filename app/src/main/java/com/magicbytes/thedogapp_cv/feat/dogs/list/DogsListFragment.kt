@@ -2,8 +2,11 @@ package com.magicbytes.thedogapp_cv.feat.dogs.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +17,7 @@ import com.magicbytes.thedogapp_cv.databinding.FragmentItemListBinding
 import com.magicbytes.thedogapp_cv.feat.dogs.details.DogDetailFragment
 import com.magicbytes.thedogapp_cv.feat.dogs.list.adapters.DogBreedsRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  * A Fragment representing a list of Dogs. This fragment
@@ -33,6 +37,35 @@ class DogsListFragment : Fragment() {
     private val adapter: DogBreedsRecyclerViewAdapter by lazy { DogBreedsRecyclerViewAdapter() }
 
     private val viewModel: DogListViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+
+        val searchMenu = menu.findItem(R.id.app_bar_search)
+        val searchView = searchMenu.actionView as? SearchView ?: return
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Timber.i("Query change: $newText")
+                return true
+            }
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.i("Query text submit: $query")
+                return true
+            }
+        })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_breed_list, menu)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
