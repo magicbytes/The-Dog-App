@@ -32,7 +32,11 @@ class DogDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.toolbarLayout?.title = breed.name
+        binding.temperamentTextView?.text = breed.temperament
+        binding.lifeSpanTextView?.text = breed.lifeSpan
+        binding.breedForTextView?.text = breed.bredFor
 
         Picasso.get().load(breed.image.url).into(binding.breedImageView)
     }
