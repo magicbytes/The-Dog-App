@@ -6,8 +6,19 @@ import javax.inject.Inject
 
 class DogsRepository @Inject constructor(private val dataSource: DataSource) {
 
+    private var allBreedsCache: List<DogBreed> = emptyList()
+
     suspend fun loadAllBreeds(): ServiceResponse<List<DogBreed>> {
-        return dataSource.loadAllBreeds()
+        allBreedsCache = emptyList()
+
+        val response = dataSource.loadAllBreeds()
+        response.onSuccess { allBreedsCache = it }
+
+        return response
+    }
+
+    fun searchBreed(filter: String): List<DogBreed> {
+        return allBreedsCache.filter { it.name.contains(filter) }
     }
 
     interface DataSource {
