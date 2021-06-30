@@ -86,8 +86,7 @@ class DogsListFragment : Fragment() {
             // layout configuration (layout, layout-sw600dp)
             val itemDetailFragmentContainer: View? = view?.findViewById(R.id.item_detail_nav_container)
 
-            val bundle = bundleOf(DogDetailFragment.ARG_ITEM_ID to breed.name)
-            bundle.putInt(DogDetailFragment.ARG_ITEM_ID, breed.id)
+            val bundle = bundleOf(DogDetailFragment.ARG_BREED to breed)
 
             if (itemDetailFragmentContainer != null) {
                 itemDetailFragmentContainer.findNavController().navigate(R.id.fragment_item_detail, bundle)
