@@ -24,7 +24,7 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
 
             dogsRepository.loadAllBreeds()
                 .onSuccessCoroutine {
-                    _screenState.postValue(ScreenState.BreedsAvailableScreenState(it))
+                    _screenState.postValue(ScreenState.BredsAvailableScreenState(it))
                 }
                 .onErrorCoroutine {
                     _screenState.postValue(ScreenState.ErrorScreenState)
@@ -38,6 +38,6 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
     sealed class ScreenState {
         object LoadingScreenState : ScreenState()
         object ErrorScreenState : ScreenState()
-        data class BreedsAvailableScreenState(val breeds: List<DogBreed>) : ScreenState()
+        data class BredsAvailableScreenState(val breeds: List<DogBreed>) : ScreenState()
     }
 }
