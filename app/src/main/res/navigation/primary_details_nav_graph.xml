@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/item_list_fragment"
-        android:name="com.magicbytes.thedogapp_cv.feat.dogs.list.ItemListFragment"
+        android:name="com.magicbytes.thedogapp_cv.feat.dogs.list.DogsListFragment"
         android:label="ItemListFragment"
         >
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/item_detail_fragment"
-        android:name="com.magicbytes.thedogapp_cv.ItemDetailFragment"
+        android:name="com.magicbytes.thedogapp_cv.feat.dogs.details.DogDetailFragment"
         android:label="item_detail"
         tools:layout="@layout/fragment_item_detail"
         >

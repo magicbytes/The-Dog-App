@@ -1,4 +1,4 @@
-package com.magicbytes.thedogapp_cv
+package com.magicbytes.thedogapp_cv.feat.dogs.details
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.magicbytes.thedogapp_cv.placeholder.PlaceholderContent
 import com.magicbytes.thedogapp_cv.databinding.FragmentItemDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * A fragment representing a single Item detail screen.
- * This fragment is either contained in a [ItemListFragment]
- * in two-pane mode (on larger screen devices) or self-contained
- * on handsets.
+ * A fragment representing a single Dog detail screen.
  */
-class ItemDetailFragment : Fragment() {
+@AndroidEntryPoint
+class DogDetailFragment : Fragment() {
 
     /**
      * The placeholder content this fragment is presenting.

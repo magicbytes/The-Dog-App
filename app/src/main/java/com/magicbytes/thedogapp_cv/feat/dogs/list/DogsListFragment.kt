@@ -12,22 +12,23 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.magicbytes.thedogapp_cv.ItemDetailFragment
 import com.magicbytes.thedogapp_cv.R
-import com.magicbytes.thedogapp_cv.placeholder.PlaceholderContent;
 import com.magicbytes.thedogapp_cv.databinding.FragmentItemListBinding
 import com.magicbytes.thedogapp_cv.databinding.ItemListContentBinding
+import com.magicbytes.thedogapp_cv.feat.dogs.details.DogDetailFragment
+import com.magicbytes.thedogapp_cv.placeholder.PlaceholderContent
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
- * A Fragment representing a list of Pings. This fragment
+ * A Fragment representing a list of Dogs. This fragment
  * has different presentations for handset and larger screen devices. On
  * handsets, the fragment presents a list of items, which when touched,
  * lead to a {@link ItemDetailFragment} representing
  * item details. On larger screens, the Navigation controller presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-
-class ItemListFragment : Fragment() {
+@AndroidEntryPoint
+class DogsListFragment : Fragment() {
 
     /**
      * Method to intercept global key events in the
@@ -88,7 +89,7 @@ class ItemListFragment : Fragment() {
             val item = itemView.tag as PlaceholderContent.PlaceholderItem
             val bundle = Bundle()
             bundle.putString(
-                ItemDetailFragment.ARG_ITEM_ID,
+                DogDetailFragment.ARG_ITEM_ID,
                 item.id
             )
             if (itemDetailFragmentContainer != null) {
