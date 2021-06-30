@@ -25,8 +25,6 @@ There are two Gradle tasks for testing the project:
 * `connectedAndroidTest` - for running Espresso on a connected device
 * `test` - for running unit tests
 
-NOTE: The unit tests should be added as an improvement. **Not implemented yet.**
-
 
 Libraries Used
 --------------
