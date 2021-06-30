@@ -15,7 +15,7 @@
         android:theme="@style/Theme.TheDogAppCV"
         >
         <activity
-            android:name=".DogBreesHostActivity"
+            android:name=".feat.dogs.DogBredHostActivity"
             android:label="@string/app_name"
             >
             <intent-filter>

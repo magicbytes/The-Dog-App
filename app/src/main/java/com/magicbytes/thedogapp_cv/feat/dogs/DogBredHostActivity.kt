@@ -1,4 +1,4 @@
-package com.magicbytes.thedogapp_cv
+package com.magicbytes.thedogapp_cv.feat.dogs
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.magicbytes.thedogapp_cv.R
 import com.magicbytes.thedogapp_cv.databinding.ActivityItemDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DogBreesHostActivity : AppCompatActivity() {
+class DogBredHostActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
