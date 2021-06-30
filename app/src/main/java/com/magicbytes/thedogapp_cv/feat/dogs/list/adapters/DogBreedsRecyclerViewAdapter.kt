@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.magicbytes.thedogapp_cv.api.data.DogBreed
 import com.magicbytes.thedogapp_cv.databinding.ItemListDogBredBinding
+import com.squareup.picasso.Picasso
 
 class DogBreedsRecyclerViewAdapter : RecyclerView.Adapter<DogBreedsRecyclerViewAdapter.ViewHolder>() {
 
@@ -42,6 +43,7 @@ class DogBreedsRecyclerViewAdapter : RecyclerView.Adapter<DogBreedsRecyclerViewA
 
         fun bind(item: DogBreed) {
             binding.breedNameTextView.text = item.name
+            Picasso.get().load(item.image.url).into(binding.breedImageView)
         }
     }
 }
