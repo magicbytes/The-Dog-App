@@ -18,7 +18,7 @@ class DogsRepository @Inject constructor(private val dataSource: DataSource) {
     }
 
     fun searchBreed(filter: String): List<DogBreed> {
-        return allBreedsCache.filter { it.name.contains(filter) }
+        return allBreedsCache.filter { it.name.contains(filter, ignoreCase = true) }
     }
 
     interface DataSource {

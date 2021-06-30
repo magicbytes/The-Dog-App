@@ -32,6 +32,11 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
         }
     }
 
+    fun filter(breedFilter: String) {
+        val newBreeds = dogsRepository.searchBreed(breedFilter)
+        _screenState.postValue(ScreenState.BredsAvailableScreenState(newBreeds))
+    }
+
     /**
      * Indicate one of the possible screen states
      */

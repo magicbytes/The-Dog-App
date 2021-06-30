@@ -1,11 +1,13 @@
 package com.magicbytes.thedogapp_cv.feat.dogs.list
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -18,6 +20,7 @@ import com.magicbytes.thedogapp_cv.feat.dogs.details.DogDetailFragment
 import com.magicbytes.thedogapp_cv.feat.dogs.list.adapters.DogBreedsRecyclerViewAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+
 
 /**
  * A Fragment representing a list of Dogs. This fragment
@@ -51,14 +54,20 @@ class DogsListFragment : Fragment() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 Timber.i("Query change: $newText")
+                viewModel.filter(newText.orEmpty())
                 return true
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Timber.i("Query text submit: $query")
+                closeKeyboard()
                 return true
             }
         })
+    }
+
+    private fun closeKeyboard() {
+        val imm: InputMethodManager? = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
