@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/item_list_fragment"
         android:name="com.magicbytes.thedogapp_cv.feat.dogs.list.DogsListFragment"
-        android:label="ItemListFragment"
+        android:label="Dog Breeds"
         >
         <action
             android:id="@+id/show_item_detail"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/item_detail_fragment"
         android:name="com.magicbytes.thedogapp_cv.feat.dogs.details.DogDetailFragment"
-        android:label="item_detail"
+        android:label="Breed Details"
         tools:layout="@layout/fragment_item_detail"
         >
         <argument

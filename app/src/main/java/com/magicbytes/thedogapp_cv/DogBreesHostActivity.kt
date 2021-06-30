@@ -11,7 +11,7 @@ import com.magicbytes.thedogapp_cv.databinding.ActivityItemDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ItemDetailHostActivity : AppCompatActivity() {
+class DogBreesHostActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 

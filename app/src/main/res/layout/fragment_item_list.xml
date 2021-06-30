@@ -15,7 +15,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context="com.magicbytes.thedogapp_cv.ItemDetailHostActivity"
+        tools:context="com.magicbytes.thedogapp_cv.DogBreesHostActivity"
         tools:listitem="@layout/item_list_dog_bred"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

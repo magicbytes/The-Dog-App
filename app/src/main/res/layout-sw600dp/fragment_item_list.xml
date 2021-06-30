@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.magicbytes.thedogapp_cv.ItemDetailHostActivity"
+        tools:context="com.magicbytes.thedogapp_cv.DogBreesHostActivity"
         tools:listitem="@layout/item_list_dog_bred"
         />
 
