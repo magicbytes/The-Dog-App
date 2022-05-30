@@ -94,7 +94,7 @@ class DogsListFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.screenState.observe(viewLifecycleOwner) {
             when (it) {
-                is DogListViewModel.ScreenState.BredsAvailableScreenState -> {
+                is DogListViewModel.ScreenState.BreedsAvailableScreenState -> {
                     showBreedsAvailable(it.breeds)
                 }
                 DogListViewModel.ScreenState.ErrorScreenState -> {

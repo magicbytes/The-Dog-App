@@ -45,6 +45,6 @@ class DogListViewModelTest {
 
         viewModel.loadAllBreeds()
 
-        assertThat(viewModel.screenState.value!!).isInstanceOf(DogListViewModel.ScreenState.BredsAvailableScreenState::class.java)
+        assertThat(viewModel.screenState.value!!).isInstanceOf(DogListViewModel.ScreenState.BreedsAvailableScreenState::class.java)
     }
 }

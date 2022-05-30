@@ -12,7 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepository, private val dispatchers: AppCoroutineDispatchers) :
+class DogListViewModel @Inject constructor(
+    private val dogsRepository: DogsRepository,
+    private val dispatchers: AppCoroutineDispatchers
+) :
     ViewModel() {
 
     private var _screenState = MutableLiveData<ScreenState>()
@@ -23,10 +26,10 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
             _screenState.postValue(ScreenState.LoadingScreenState)
 
             dogsRepository.loadAllBreeds()
-                .onSuccessCoroutine {
-                    _screenState.postValue(ScreenState.BredsAvailableScreenState(it))
+                .onSuccess {
+                    _screenState.postValue(ScreenState.BreedsAvailableScreenState(it))
                 }
-                .onErrorCoroutine {
+                .onFailure {
                     _screenState.postValue(ScreenState.ErrorScreenState)
                 }
         }
@@ -34,7 +37,7 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
 
     fun filter(breedFilter: String) {
         val newBreeds = dogsRepository.searchBreed(breedFilter)
-        _screenState.postValue(ScreenState.BredsAvailableScreenState(newBreeds))
+        _screenState.postValue(ScreenState.BreedsAvailableScreenState(newBreeds))
     }
 
     /**
@@ -43,6 +46,6 @@ class DogListViewModel @Inject constructor(private val dogsRepository: DogsRepos
     sealed class ScreenState {
         object LoadingScreenState : ScreenState()
         object ErrorScreenState : ScreenState()
-        data class BredsAvailableScreenState(val breeds: List<DogBreed>) : ScreenState()
+        data class BreedsAvailableScreenState(val breeds: List<DogBreed>) : ScreenState()
     }
 }
