@@ -9,14 +9,19 @@ class DogsNetworkDataSource @Inject constructor(private val dogsService: DogsSer
     DogsRepository.DataSource {
 
     override suspend fun loadAllBreeds(): Result<List<DogBreed>> {
-        val response = dogsService.getAllBreeds()
+        return try {
+            val response = dogsService.getAllBreeds()
 
-        return if (response.isSuccessful) {
-            Result.success(response.body().orEmpty())
-        } else {
-            val errorMessage = response.errorBody()?.string().orEmpty()
-            Timber.e("There was an issue when loading all breeds: $errorMessage")
-            Result.failure(Throwable(errorMessage))
+            if (response.isSuccessful) {
+                Result.success(response.body().orEmpty())
+            } else {
+                val errorMessage = response.errorBody()?.string().orEmpty()
+                Timber.e("There was an issue when loading all breeds: $errorMessage")
+                Result.failure(Throwable(errorMessage))
+            }
+        } catch (exception: Exception) {
+            Timber.e("There was an issue when loading all breeds", exception)
+            Result.failure(exception)
         }
     }
 }

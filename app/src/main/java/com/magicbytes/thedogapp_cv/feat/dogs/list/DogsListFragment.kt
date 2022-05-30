@@ -9,10 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.magicbytes.thedogapp_cv.R
 import com.magicbytes.thedogapp_cv.api.data.DogBreed
 import com.magicbytes.thedogapp_cv.databinding.FragmentItemListBinding
@@ -33,6 +36,7 @@ import timber.log.Timber
 @AndroidEntryPoint
 class DogsListFragment : Fragment() {
 
+    private var retryDialog: AlertDialog? = null
 
     private var _binding: FragmentItemListBinding? = null
     private val binding get() = _binding!!
@@ -66,7 +70,8 @@ class DogsListFragment : Fragment() {
     }
 
     private fun closeKeyboard() {
-        val imm: InputMethodManager? = requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        val imm: InputMethodManager? =
+            requireContext().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
         imm?.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
@@ -110,14 +115,24 @@ class DogsListFragment : Fragment() {
     }
 
     private fun showLoading() {
-
+        binding.loadingProgressBar?.isVisible = true
     }
 
     private fun showErrorState() {
-
+        binding.loadingProgressBar?.isVisible = false
+        retryDialog = MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Issue loading data")
+            .setMessage("Please check your internet connection and try again")
+            .setCancelable(false)
+            .setPositiveButton("Retry") { _, _ -> viewModel.loadAllBreeds() }
+            .setOnDismissListener {
+                retryDialog = null
+            }
+            .show()
     }
 
     private fun showBreedsAvailable(breeds: List<DogBreed>) {
+        binding.loadingProgressBar?.isVisible = false
         adapter.listItems = breeds
     }
 
@@ -126,12 +141,14 @@ class DogsListFragment : Fragment() {
         adapter.onBreedSelected = { breed ->
             // Leaving this not using view binding as it relies on if the view is visible the current
             // layout configuration (layout, layout-sw600dp)
-            val itemDetailFragmentContainer: View? = view?.findViewById(R.id.item_detail_nav_container)
+            val itemDetailFragmentContainer: View? =
+                view?.findViewById(R.id.item_detail_nav_container)
 
             val bundle = bundleOf(DogDetailFragment.ARG_BREED to breed)
 
             if (itemDetailFragmentContainer != null) {
-                itemDetailFragmentContainer.findNavController().navigate(R.id.fragment_item_detail, bundle)
+                itemDetailFragmentContainer.findNavController()
+                    .navigate(R.id.fragment_item_detail, bundle)
             } else {
                 view?.findNavController()?.navigate(R.id.show_item_detail, bundle)
             }
